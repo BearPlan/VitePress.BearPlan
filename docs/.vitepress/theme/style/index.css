@@ -1,2 +1,421 @@
 /* index.css */
 @import './var.css';
+
+/* ============================================================
+   整个 VPHero 外层 macOS 窗口化
+   整窗复用左侧文字 glitch 风格（window-glitch 动画）：
+   - 89–95% 区间整窗出现明显的红/青双层色差错位 + transform 抖动
+   - 静态区间保留弱 RGB 色差（同 .name .clip 的 drop-shadow）
+   - ::before 顶部三个圆点 (red/yellow/green) + ::after 标题文字保持静态
+   ============================================================ */
+.VPHero {
+  position: relative;
+  max-width: 1152px;
+  margin: 48px auto !important;
+  padding: 72px 24px 40px !important;
+  border: 1px solid rgba(181, 155, 255, .4);
+  border-radius: 12px;
+
+  /* 顶部紫渐变 + 底色（扫描线已移除，与左侧文字风格统一） */
+  background:
+    linear-gradient(180deg, rgba(96, 60, 186, .05) 0%, transparent 60%),
+    var(--vp-c-bg);
+
+  box-shadow:
+    0 0 0 1px rgba(96, 60, 186, .15),
+    0 24px 60px -20px rgba(96, 60, 186, .45),
+    inset 0 1px 0 rgba(255, 255, 255, .04);
+
+  overflow: hidden;
+  /* 整窗 Glitch：RGB 色差强度变化 + transform 抖动（覆盖整个布局） */
+  animation: window-glitch 5s infinite;
+}
+
+/* 顶部三个圆点 + 标题栏背景（静态） */
+.VPHero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  background:
+    radial-gradient(circle at 22px 18px, #ff5f57 0 6px, transparent 7px),
+    radial-gradient(circle at 44px 18px, #febc2e 0 6px, transparent 7px),
+    radial-gradient(circle at 66px 18px, #28c840 0 6px, transparent 7px),
+    linear-gradient(180deg, rgba(125, 125, 125, .08), rgba(125, 125, 125, .02));
+  border-bottom: 1px solid rgba(181, 155, 255, .25);
+  pointer-events: none;
+  z-index: 5;
+  /* 紫光晕 */
+  box-shadow: 0 0 12px rgba(181, 155, 255, .35);
+}
+
+/* 标题文字（静态） */
+.VPHero::after {
+  content: 'bear-platform — bash — 132×40';
+  position: absolute;
+  top: 11px;
+  left: 92px;
+  right: 0;
+  color: var(--vp-c-text-3, #888);
+  font-size: 12px;
+  letter-spacing: .4px;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Consolas", "Courier New", ui-monospace, monospace;
+  pointer-events: none;
+  z-index: 6;
+  text-align: center;
+  opacity: .85;
+  /* 紫蓝光晕（与左侧文字 text-shadow 同款） */
+  text-shadow:
+    0 0 12px rgba(181, 155, 255, .45),
+    0 0 24px rgba(96, 60, 186, .25);
+}
+
+/* —— 整窗 Glitch：覆盖整个布局的 RGB 色差错位 + 抖动 ——
+   静态状态复刻左侧文字 .name .clip 的弱色差；
+   抖动区间把 drop-shadow 偏移拉大，整窗出现明显的红/青双层错位 + transform 偏移。 */
+@keyframes window-glitch {
+  0%, 88%, 100% {
+    transform: translate(0, 0);
+    filter:
+      drop-shadow(2px 0 0 rgba(255, 0, 170, .35))
+      drop-shadow(-2px 0 0 rgba(0, 255, 234, .35));
+  }
+  89% {
+    transform: translate(-3px, 2px);
+    filter:
+      drop-shadow(7px 0 0 rgba(255, 0, 170, .85))
+      drop-shadow(-7px 0 0 rgba(0, 255, 234, .85));
+  }
+  91% {
+    transform: translate(3px, -1px);
+    filter:
+      drop-shadow(6px 0 0 rgba(255, 0, 170, .75))
+      drop-shadow(-6px 0 0 rgba(0, 255, 234, .75));
+  }
+  93% {
+    transform: translate(-2px, -2px);
+    filter:
+      drop-shadow(5px 0 0 rgba(255, 0, 170, .65))
+      drop-shadow(-5px 0 0 rgba(0, 255, 234, .65));
+  }
+  95% {
+    transform: translate(2px, 2px);
+    filter:
+      drop-shadow(4px 0 0 rgba(255, 0, 170, .55))
+      drop-shadow(-4px 0 0 rgba(0, 255, 234, .55));
+  }
+}
+
+/* 小屏适配 */
+@media (max-width: 768px) {
+  .VPHero {
+    max-width: 100%;
+    padding: 64px 24px 32px !important;
+    margin: 24px auto !important;
+  }
+  .VPHero::after {
+    font-size: 11px;
+    left: 80px;
+  }
+}
+
+/* 尊重用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .VPHero,
+  .VPHero::before,
+  .VPHero::after {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   Feature 卡片 macOS 终端窗口化
+   - 每个 .box 变成迷你 macOS 终端
+   - ::before 顶部三个圆点
+   - ::after 卡片右上角 "— feature" 标签
+   ============================================================ */
+.VPFeatures .box {
+  position: relative;
+  padding-top: 48px !important;
+  border: 1px solid rgba(181, 155, 255, .22) !important;
+  border-radius: 12px !important;
+  background:
+    linear-gradient(180deg, rgba(96, 60, 186, .04) 0%, transparent 60%),
+    var(--vp-c-bg) !important;
+  box-shadow:
+    0 0 0 1px rgba(96, 60, 186, .08),
+    0 12px 28px -16px rgba(96, 60, 186, .35) !important;
+  overflow: hidden;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+
+.VPFeatures .box:hover {
+  border-color: rgba(181, 155, 255, .45) !important;
+  box-shadow:
+    0 0 0 1px rgba(181, 155, 255, .25),
+    0 18px 40px -16px rgba(96, 60, 186, .55) !important;
+  transform: translateY(-2px);
+}
+
+/* 顶部圆点 + 标题栏 */
+.VPFeatures .box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background:
+    radial-gradient(circle at 14px 15px, #ff5f57 0 5px, transparent 6px),
+    radial-gradient(circle at 30px 15px, #febc2e 0 5px, transparent 6px),
+    radial-gradient(circle at 46px 15px, #28c840 0 5px, transparent 6px),
+    linear-gradient(180deg, rgba(125, 125, 125, .08), rgba(125, 125, 125, .02));
+  border-bottom: 1px solid rgba(125, 125, 125, .12);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 右上角等宽字体标签 */
+.VPFeatures .box::after {
+  content: '— feature';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: var(--vp-c-text-3, #888);
+  font-size: 11px;
+  letter-spacing: .3px;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Consolas", "Courier New", ui-monospace, monospace;
+  opacity: .55;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 内容层级提升，避免被标题栏压住 */
+.VPFeatures .box > .icon,
+.VPFeatures .box > .title,
+.VPFeatures .box > .details,
+.VPFeatures .box > .link-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* hover 时让 ::after 标签轻微亮起 */
+.VPFeatures .box:hover::after {
+  opacity: .85;
+  color: var(--vp-c-text-2, #aaa);
+}
+
+/* ============================================================
+   Hero 左侧文字 Glitch 故障效果
+   复刻自 preloader demo 里的 LOADING Glitch 视觉风格
+   ============================================================ */
+.VPHero .name .clip,
+.VPHero .text {
+  position: relative;
+  display: inline-block;
+  /* 主色保持可见 + 紫蓝光晕 */
+  text-shadow:
+    0 0 12px rgba(181, 155, 255, .45),
+    0 0 24px rgba(96, 60, 186, .25);
+}
+
+.VPHero .name .clip {
+  /* 主标题额外色差光晕（弱化版的 RGB 色差，常驻） */
+  filter:
+    drop-shadow(2px 0 0 rgba(255, 0, 170, .35))
+    drop-shadow(-2px 0 0 rgba(0, 255, 234, .35));
+  animation: hero-jitter 5s infinite;
+}
+
+.VPHero .text {
+  animation: hero-jitter 5s infinite;
+  animation-delay: .25s;
+}
+
+/* 红/青双层错位 */
+.VPHero .name .clip::before,
+.VPHero .name .clip::after,
+.VPHero .text::before,
+.VPHero .text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  background: transparent !important;
+  -webkit-text-fill-color: currentColor;
+}
+
+.VPHero .name .clip::before,
+.VPHero .text::before {
+  color: #ff00aa;
+  animation: glitch-1 2.5s infinite linear alternate-reverse;
+  mix-blend-mode: screen;
+}
+
+.VPHero .name .clip::after,
+.VPHero .text::after {
+  color: #00ffea;
+  animation: glitch-2 3s infinite linear alternate-reverse;
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 90% 0);   transform: translate(0); }
+  20%      { clip-path: inset(40% 0 40% 0); transform: translate(-3px, 1px); }
+  40%      { clip-path: inset(10% 0 70% 0); transform: translate(3px, -1px); }
+  60%      { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 2px); }
+  80%      { clip-path: inset(30% 0 50% 0); transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(80% 0 5% 0);  transform: translate(0); }
+  25%      { clip-path: inset(20% 0 60% 0); transform: translate(2px, 1px); }
+  50%      { clip-path: inset(60% 0 20% 0); transform: translate(-3px, -1px); }
+  75%      { clip-path: inset(40% 0 35% 0); transform: translate(2px, 2px); }
+}
+
+/* 整体偶尔抖动（与 glitch 视觉同步） */
+@keyframes hero-jitter {
+  0%, 88%, 100% { transform: translate(0, 0); }
+  89%           { transform: translate(-1px, 1px); }
+  91%           { transform: translate(1px, -1px); }
+  93%           { transform: translate(-1px, -1px); }
+  95%           { transform: translate(1px, 1px); }
+}
+
+/* 尊重用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .VPHero .name .clip,
+  .VPHero .text,
+  .VPHero .name .clip::before,
+  .VPHero .name .clip::after,
+  .VPHero .text::before,
+  .VPHero .text::after {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   Hero Actions 按钮炫酷化
+   - brand(项目地址): 紫蓝渐变 + 常驻呼吸光晕 + 流光扫过
+   - alt(博客): 半透明边框 + 紫光投影
+   - hover: RGB 色差 drop-shadow
+   ============================================================ */
+.VPHero .actions .VPButton {
+  position: relative;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .4px;
+  transition: transform .25s ease, box-shadow .25s ease,
+              border-color .25s ease, filter .15s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* —— Brand 主按钮：紫蓝渐变 + 呼吸光晕 + 流光 —— */
+.VPHero .actions .VPButton.brand {
+  background: linear-gradient(135deg, rgba(96, 60, 186, .95), rgba(33, 99, 232, .95)) !important;
+  border: 1px solid rgba(181, 155, 255, .55) !important;
+  color: #fff !important;
+  box-shadow:
+    0 0 0 1px rgba(96, 60, 186, .25),
+    0 8px 22px -8px rgba(96, 60, 186, .7),
+    0 0 28px rgba(181, 155, 255, .3) !important;
+  animation: btn-pulse 3s ease-in-out infinite;
+}
+
+/* brand 按钮流光叠加层 */
+.VPHero .actions .VPButton.brand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 255, 255, .4) 50%,
+    transparent 70%
+  );
+  transform: translateX(-110%);
+  animation: btn-sheen 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* —— Alt 次按钮：透明 + 紫光描边 —— */
+.VPHero .actions .VPButton.alt {
+  background: rgba(96, 60, 186, .1) !important;
+  border: 1px solid rgba(181, 155, 255, .4) !important;
+  color: var(--vp-c-text-1) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 0 1px rgba(96, 60, 186, .15),
+    0 4px 18px -6px rgba(96, 60, 186, .35) !important;
+}
+
+/* —— 通用 hover —— */
+.VPHero .actions .VPButton:hover {
+  transform: translateY(-2px);
+  z-index: 1;
+}
+
+/* brand hover：RGB 色差 + 强化光 */
+.VPHero .actions .VPButton.brand:hover {
+  border-color: rgba(255, 0, 170, .7) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 0, 170, .5),
+    0 14px 30px -8px rgba(96, 60, 186, .85),
+    0 0 38px rgba(181, 155, 255, .5),
+    5px 0 14px rgba(255, 0, 170, .45),
+    -5px 0 14px rgba(0, 255, 234, .45) !important;
+}
+
+/* alt hover：青色光晕 + RGB 色差 */
+.VPHero .actions .VPButton.alt:hover {
+  background: rgba(96, 60, 186, .2) !important;
+  border-color: rgba(0, 255, 234, .7) !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 234, .4),
+    0 10px 26px -6px rgba(33, 99, 232, .55),
+    4px 0 12px rgba(0, 255, 234, .35),
+    -4px 0 12px rgba(255, 0, 170, .35) !important;
+}
+
+/* 按下回弹 */
+.VPHero .actions .VPButton:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* —— 关键帧 —— */
+@keyframes btn-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(96, 60, 186, .25),
+      0 8px 22px -8px rgba(96, 60, 186, .7),
+      0 0 28px rgba(181, 155, 255, .3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(181, 155, 255, .45),
+      0 8px 26px -8px rgba(96, 60, 186, .8),
+      0 0 38px rgba(181, 155, 255, .45);
+  }
+}
+
+@keyframes btn-sheen {
+  0%   { transform: translateX(-110%); }
+  55%, 100% { transform: translateX(110%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPHero .actions .VPButton,
+  .VPHero .actions .VPButton.brand,
+  .VPHero .actions .VPButton.brand::before,
+  .VPHero .actions .VPButton.alt {
+    animation: none !important;
+  }
+}

@@ -3,13 +3,15 @@ layout: home
 
 hero:
   name: "BearPlatform"
+  image:
+    src: /image/logo.png
+    alt: BearPlatform
   text: |
     全栈重构 API 集成体验
     简单 · 精准 · 高效
   tagline: |
     基于 .NET Core、Vue 3、Uni-App
     集成 SqlSugar、Element Plus、Wot Design Uni
-  image: "/image/logo.png"
   actions:
     - theme: brand
       text: 项目地址

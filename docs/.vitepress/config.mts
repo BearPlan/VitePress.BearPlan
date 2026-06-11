@@ -14,6 +14,7 @@ export default defineConfig({
   base: '/',
   title: "BearPlatform - .NET全栈开源平台",
   description: "轻量灵活的 C# 核心库",
+  appearance: 'dark',
   themeConfig: {
     logo: "/image/logo.png",
     nav: [
