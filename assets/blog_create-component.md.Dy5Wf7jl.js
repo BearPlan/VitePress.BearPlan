@@ -1,4 +1,4 @@
-import{_ as s,c as a,o as p,ae as e}from"./chunks/framework.Dgg8-8ov.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"blog/create-component.md","filePath":"blog/create-component.md"}'),l={name:"blog/create-component.md"};function t(i,n,o,c,r,u){return p(),a("div",null,n[0]||(n[0]=[e(`<p><strong>Vue3函数式调用组件 createComponent</strong></p><p>== 调用结束要关闭 组件==</p><p>以调用 重写插槽为例</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>const openMonacoCode=async (row: TableColumnInfo)=&gt;{</span></span>
+import{_ as s,c as a,o as p,ae as e}from"./chunks/framework.Dh1jimFm.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"blog/create-component.md","filePath":"blog/create-component.md"}'),l={name:"blog/create-component.md"};function t(i,n,o,c,r,u){return p(),a("div",null,n[0]||(n[0]=[e(`<p><strong>Vue3函数式调用组件 createComponent</strong></p><p>== 调用结束要关闭 组件==</p><p>以调用 重写插槽为例</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>const openMonacoCode=async (row: TableColumnInfo)=&gt;{</span></span>
 <span class="line"><span>   //函数式组件 instance 为 ref , on 为 emit , unmount 为 destroy</span></span>
 <span class="line"><span>   const { instance, on, unmount } = await  createComponent( MonacoCode, { modelValue: row.attrs,visible: true } )</span></span>
 <span class="line"><span></span></span>
@@ -9,6 +9,7 @@ import{_ as s,c as a,o as p,ae as e}from"./chunks/framework.Dgg8-8ov.js";const d
 <span class="line"><span>   on(&#39;update:visible&#39;, () =&gt; {</span></span>
 <span class="line"><span>          unmount()</span></span>
 <span class="line"><span>   })</span></span>
+<span class="line"><span>   </span></span>
 <span class="line"><span>}</span></span></code></pre></div><p><strong>子组件内部 (monaco-code.vue)</strong></p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>&lt;script setup lang=&quot;tsx&quot;&gt;</span></span>
 <span class="line"><span>import type * as monaco from &#39;monaco-editor&#39;;</span></span>
 <span class="line"><span>import { ref } from &#39;vue&#39;;</span></span>
