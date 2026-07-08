@@ -12,7 +12,7 @@ export default defineConfig({
     ]
   ],
   base: '/',
-  title: "BearPlatform - .NET全栈开源平台",
+  title: "BearPlan - .NET全栈开源平台",
   description: "轻量灵活的 C# 核心库",
   appearance: 'dark',
   themeConfig: {
@@ -23,8 +23,8 @@ export default defineConfig({
       { text: '技术支持', link: '/support/first.md' },
        { text: '链接',
         items: [
-          { text: 'gitee', link: 'https://gitee.com/ByteXiong/BearPlatform' },
-          { text: 'github', link: 'https://github.com/ByteXiong/BearPlatform' },
+          { text: 'gitee', link: 'https://gitee.com/ByteXiong/BearPlan' },
+          { text: 'github', link: 'https://github.com/ByteXiong/BearPlan' },
         ]
        }
     ],
@@ -50,8 +50,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'gitee', link: 'https://gitee.com/ByteXiong/BearPlatform' },
-      { icon: 'github', link: 'https://github.com/ByteXiong/BearPlatform' }
+      { icon: 'gitee', link: 'https://gitee.com/ByteXiong/BearPlan' },
+      { icon: 'github', link: 'https://github.com/ByteXiong/BearPlan' }
     ]
   }
 })

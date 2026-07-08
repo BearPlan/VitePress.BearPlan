@@ -2,10 +2,10 @@
 layout: home
 
 hero:
-  name: "BearPlatform"
+  name: "BearPlan"
   image:
     src: /image/logo.png
-    alt: BearPlatform
+    alt: BearPlan
   text: |
     全栈重构 API 集成体验
     简单 · 精准 · 高效
@@ -15,7 +15,7 @@ hero:
   actions:
     - theme: brand
       text: 项目地址
-      link: https://gitee.com/ByteXiong/BearPlatform
+      link: https://gitee.com/ByteXiong/BearPlan
     - theme: alt
       text: 博客
       link: /api-examples
