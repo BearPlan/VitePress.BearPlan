@@ -29,6 +29,13 @@ html.nature-bg .VPHome {
   background: transparent;
 }
 
+/* 解除 Hero 默认 flex:1 的纵向铺满，让首页整体高度跟随内容自适应 */
+html.nature-bg .VPHero,
+html.nature-bg .VPHero .container {
+  flex: 0 0 auto;
+  flex-grow: 0;
+}
+
 /* 导航栏：毛玻璃化，让背景透出顶部；保持可读 */
 html.nature-bg .VPNavBar {
   background-color: rgba(255, 255, 255, 0.4) !important;
@@ -88,31 +95,28 @@ html.dark.nature-bg .VPFooter {
 }
 
 /* ============================================================
-   Hero：毛玻璃面板（替代原赛博朋克终端窗口）
-   亮色=白色半透明 + 深字；暗色=深色半透明 + 亮字
+   Hero：去毛玻璃，完全透出背景；高度自适应内容、不做纵向铺满
    ============================================================ */
 html.nature-bg .VPHero {
   position: relative;
   max-width: 1152px;
-  margin: 48px auto !important;
-  padding: 64px 24px 40px !important;
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 16px;
-  box-shadow:
-    0 8px 40px rgba(46, 125, 50, 0.12),
-    0 2px 10px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
+  margin: 0 auto !important;
+  padding: 12px 24px 8px !important;
+  min-height: 0 !important;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Hero 内部容器：取消默认纵向大间距，让整体高度跟随内容 */
+html.nature-bg .VPHero .container {
+  padding: 0 !important;
 }
 
 html.dark.nature-bg .VPHero {
-  background-color: rgba(15, 15, 20, 0.4);
-  border-color: rgba(120, 200, 255, 0.18);
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 /* Hero 文字在毛玻璃上加深可读（name 除外：name 用渐变 background-clip 文字，由 var.css 控制）*/
@@ -130,34 +134,54 @@ html.dark.nature-bg .VPHero .tagline {
 @media (max-width: 768px) {
   html.nature-bg .VPHero {
     max-width: 100%;
-    padding: 48px 20px 32px !important;
-    margin: 24px auto !important;
+    padding: 8px 16px 6px !important;
+    margin: 0 auto !important;
   }
 }
 
 /* ============================================================
    Feature 卡片：毛玻璃化（移除原终端三圆点 / — feature 标签）
    ============================================================ */
+/* 压缩容器上下内边距；卡片用 grid 一排四个 + 同行等高 */
+html.nature-bg .VPFeatures .container {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+html.nature-bg .VPFeatures .items {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px !important;
+}
+html.nature-bg .VPFeatures .item {
+  width: auto !important;
+  padding: 0 !important;
+}
+/* box 撑满 grid 单元格，同一行卡片自动等高 */
+html.nature-bg .VPFeatures .box {
+  height: 100%;
+}
+
 html.nature-bg .VPFeatures .box {
   position: relative;
-  padding: 24px !important;
+  padding: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   border-radius: 16px !important;
-  background-color: rgba(255, 255, 255, 0.4) !important;
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  /* 清亮：去掉 saturate 浓色感，blur 降至 2px 仅保留极轻磨砂 */
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   box-shadow:
-    0 6px 28px rgba(46, 125, 50, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    0 6px 28px rgba(46, 125, 50, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04) !important;
   overflow: hidden;
   transition: border-color .25s, box-shadow .25s, transform .25s;
 }
 
 html.dark.nature-bg .VPFeatures .box {
-  background-color: rgba(15, 15, 20, 0.4) !important;
+  background-color: rgba(15, 15, 20, 0.1) !important;
   border-color: rgba(120, 200, 255, 0.16) !important;
   box-shadow:
-    0 6px 28px rgba(0, 0, 0, 0.4),
+    0 6px 28px rgba(0, 0, 0, 0.32),
     inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
 }
 
@@ -188,6 +212,18 @@ html.dark.nature-bg .VPFeatures .box .title {
 
 html.dark.nature-bg .VPFeatures .box .details {
   color: rgba(255, 255, 255, 0.68);
+}
+
+/* 响应式：中屏两列，小屏一列 */
+@media (max-width: 912px) {
+  html.nature-bg .VPFeatures .items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  html.nature-bg .VPFeatures .items {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============================================================
