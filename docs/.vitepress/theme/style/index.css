@@ -102,39 +102,24 @@ html.nature-bg .VPFooter {
 
 /* ============================================================
    Hero：去毛玻璃，完全透出背景，与八格同屏
-   VPHome 用 flex:1 把 VPHero 撑高。VPHero 作为 flex 列容器，让
-   container 用 flex 控制其在撑开空间内的垂直位置：
-   上方留白(1份) : container : 下方留白(2份) = 1 : 0 : 2，
-   内容整体偏上。container 自身 display:flex 不变，内部 main/image
-   左右排版完全保留（嵌套 flex 合法，不互相干扰）
+   绝不给 VPHero 设 display:flex——会破坏它内部 container 的
+   main/image 左右排版（已多次验证）。VPHero 保持默认 block，
+   在 VPHome 的 flex 列里被 flex:1 撑高；上下留白用 vh padding
+   按 上1:下2 比例分配，随视口高度弹性变化。container 内部不动
    ============================================================ */
 html.nature-bg .VPHero {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   margin-top: 0 !important;
-  padding: 0 24px !important;
+  padding-top: 8vh !important;
+  padding-bottom: 16vh !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
   background-color: transparent;
   border: none;
   box-shadow: none;
 }
 
-/* 上方弹性留白占 1 份（flex-grow:1），把 container 顶部下推 */
-html.nature-bg .VPHero::before {
-  content: '';
-  flex-grow: 1;
-}
-
-/* 下方弹性留白占 2 份（flex-grow:2），使 container 整体偏上 */
-html.nature-bg .VPHero::after {
-  content: '';
-  flex-grow: 2;
-}
-
-/* container 自身布局完全保留（main/image 左右排版不动），
-   仅清掉主题默认纵向大间距 */
+/* container 内部排版保持主题默认，仅清掉主题默认纵向大间距 */
 html.nature-bg .VPHero .container {
-  flex: 0 0 auto;
   padding: 0 !important;
 }
 
