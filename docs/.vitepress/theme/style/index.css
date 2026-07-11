@@ -96,9 +96,13 @@ html.nature-bg .VPFooter {
 }
 
 /* ============================================================
-   Hero：去毛玻璃，完全透出背景；高度自适应内容、不做纵向铺满
+   Hero：去毛玻璃，完全透出背景
+   VPHero 作为 flex 容器，让 container 撑满 Hero 高度；main 内容垂直居中，
+   撑开的剩余空间均匀化为上下留白，随屏幕高度按比例弹性变化
    ============================================================ */
 html.nature-bg .VPHero {
+  display: flex;
+  flex-direction: column;
   position: relative;
   max-width: 1152px;
   margin: 0 auto !important;
@@ -109,9 +113,16 @@ html.nature-bg .VPHero {
   box-shadow: none;
 }
 
-/* Hero 内部容器：取消默认纵向大间距，让整体高度跟随内容 */
+/* container 撑满 VPHero 高度，让内部 main/image 在垂直方向上获得弹性空间 */
 html.nature-bg .VPHero .container {
+  flex: 1 0 auto;
   padding: 0 !important;
+}
+
+/* Hero 文字（标题/tagline/按钮）在撑开的空间内垂直居中，
+   上下留白即 Hero 与导航栏、Hero 与八格之间的间距，随屏幕高度按比例撑开 */
+html.nature-bg .VPHero .main {
+  justify-content: center;
 }
 
 html.dark.nature-bg .VPHero {
