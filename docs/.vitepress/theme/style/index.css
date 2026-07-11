@@ -29,24 +29,15 @@ html.nature-bg .VPHome {
   background: transparent;
 }
 
-/* VPHome 撑满「视口 − 导航栏」并改为 flex 列布局：
-   Hero flex:1 吃掉剩余空间，把八格顶到视口底部 */
-html.nature-bg .VPHome {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - var(--vp-nav-height));
-  margin-bottom: 0;
-}
-
-/* Hero 吃掉八格之外的全部剩余空间，撑开后内容垂直居中；
-   container 内部 main/image 布局保持默认 */
+/* Hero 独占首屏：min-height 撑满「视口 − 导航栏」，内容垂直居中，
+   八格作为第二屏在下方滚动可见 */
 html.nature-bg .VPHero {
-  flex: 1 0 auto;
+  flex: none;
 }
 
-/* 八格保持内容高度固定，不被压缩，始终贴在底部 */
+/* 八格恢复正常文档流（紧跟 Hero 下方，向下滚动可见） */
 html.nature-bg .VPFeatures {
-  flex: 0 0 auto;
+  flex: none;
 }
 
 html.nature-bg .VPHero .container {
@@ -99,30 +90,39 @@ html.dark.nature-bg .VPNavBar .VPNavBarTitle .title {
   color: transparent;
 }
 
-/* 首页隐藏页脚：保证 Hero + Features 铺满一屏、无滚动条 */
+/* 页脚透出背景（Hero 独占首屏方案下，页脚在第二屏正常显示） */
 html.nature-bg .VPFooter {
-  display: none;
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+html.dark.nature-bg .VPFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================================
-   Hero：去毛玻璃，完全透出背景
-   注意：绝不改 VPHero 的 display/flex-direction——它内部 main/image
-   的左右排版由主题组件控制。这里只保留透明背景 + 边距清零，
-   垂直居中靠 flex:1 + margin:auto 0（margin auto 在 block 子项上生效，
-   让 VPHero 在 VPHome 的 flex 列里垂直居中，内部排版零影响）
+   Hero：独占首屏，去毛玻璃，完全透出背景
+   VPHero 自身设为 flex 容器 + min-height 撑满「视口 − 导航栏」，
+   用 align-items:center 让 container 作为整体在撑满的高度内垂直居中。
+   不触碰 container 内部 main/image 的左右排版
    ============================================================ */
 html.nature-bg .VPHero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  max-width: 1152px;
-  margin: auto 0 !important;
+  max-width: 100%;
+  margin: 0 auto !important;
   padding: 0 24px !important;
-  min-height: 0 !important;
+  min-height: calc(100vh - var(--vp-nav-height)) !important;
   background-color: transparent;
   border: none;
   box-shadow: none;
 }
 
-/* 不触碰 container 内部，padding 仅清掉主题默认纵向大间距 */
+/* container 内部 main/image 左右排版保持主题默认不动 */
 html.nature-bg .VPHero .container {
   padding: 0 !important;
 }
@@ -144,17 +144,11 @@ html.dark.nature-bg .VPHero .tagline {
   color: rgba(255, 255, 255, 0.92) !important;
 }
 
-/* 小屏适配：内容天然较多，Hero 退回内容自适应（允许滚动），避免被压扁不可见 */
+/* 小屏适配：内容天然较多，Hero 不再强制撑满视口，退回内容高度避免大段空白 */
 @media (max-width: 768px) {
-  html.nature-bg .VPHome {
-    min-height: 0;
-  }
   html.nature-bg .VPHero {
-    flex: 0 0 auto;
-    flex-grow: 0;
-    max-width: 100%;
-    padding: 8px 16px !important;
-    margin: 0 auto !important;
+    min-height: auto !important;
+    padding: 24px 16px !important;
   }
 }
 
