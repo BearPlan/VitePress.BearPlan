@@ -29,15 +29,24 @@ html.nature-bg .VPHome {
   background: transparent;
 }
 
-/* VPHome 撑满「视口 − 导航栏」，Hero 与 Features 在此空间内分配 */
+/* VPHome 撑满「视口 − 导航栏」并改为 flex 列布局：
+   Hero flex:1 吃掉剩余空间，把八格顶到视口底部 */
 html.nature-bg .VPHome {
+  display: flex;
+  flex-direction: column;
   min-height: calc(100vh - var(--vp-nav-height));
+  margin-bottom: 0;
 }
 
-/* Hero 恢复 flex:1，吃掉 Features 之外的剩余空间，内容自然居中铺满 */
+/* Hero 吃掉八格之外的全部剩余空间，撑开后内容垂直居中；
+   container 内部 main/image 布局保持默认 */
 html.nature-bg .VPHero {
   flex: 1 0 auto;
-  flex-grow: 1;
+}
+
+/* 八格保持内容高度固定，不被压缩，始终贴在底部 */
+html.nature-bg .VPFeatures {
+  flex: 0 0 auto;
 }
 
 html.nature-bg .VPHero .container {
