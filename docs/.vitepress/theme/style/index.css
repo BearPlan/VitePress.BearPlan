@@ -106,27 +106,24 @@ html.nature-bg .VPFooter {
 
 /* ============================================================
    Hero：去毛玻璃，完全透出背景
-   VPHero 作为 flex 列容器并垂直居中：container 作为整体居中，
-   撑开的剩余空间均匀化为上下留白，随屏幕高度按比例弹性变化。
-   不触碰 container 内部排版，main/image 的左右布局保持默认
+   注意：绝不改 VPHero 的 display/flex-direction——它内部 main/image
+   的左右排版由主题组件控制。这里只保留透明背景 + 边距清零，
+   垂直居中靠 flex:1 + margin:auto 0（margin auto 在 block 子项上生效，
+   让 VPHero 在 VPHome 的 flex 列里垂直居中，内部排版零影响）
    ============================================================ */
 html.nature-bg .VPHero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   position: relative;
   max-width: 1152px;
-  margin: 0 auto !important;
-  padding: 16px 24px !important;
+  margin: auto 0 !important;
+  padding: 0 24px !important;
   min-height: 0 !important;
   background-color: transparent;
   border: none;
   box-shadow: none;
 }
 
-/* container 作为整体居中，其内部 main/image 布局保持默认不动 */
+/* 不触碰 container 内部，padding 仅清掉主题默认纵向大间距 */
 html.nature-bg .VPHero .container {
-  margin: auto 0;
   padding: 0 !important;
 }
 
