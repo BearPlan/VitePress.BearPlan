@@ -4,16 +4,10 @@
      primary-color(#646cff) → primary-400(#b6beff，antd 调色板 index4) */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(135deg, #646cff, #b6beff);
-  /* Hero 图像光晕：紫蓝色柔光，呼应 name 渐变 */
-  --vp-home-hero-image-background-image: linear-gradient(135deg, #b5afdd, #a5b4fc, #c7d2fe);
-  --vp-home-hero-image-filter: blur(80px);
 }
 
 html.dark {
   /* 暗色 Hero 名称：紫蓝渐变(暗色提亮端更偏蓝) */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(135deg, #818cf8, #c7d2fe);
-  /* 暗色 Hero 图像光晕：夜空蓝紫 */
-  --vp-home-hero-image-background-image: linear-gradient(135deg, #1e1b4b, #3730a3, #4338ca);
-  --vp-home-hero-image-filter: blur(56px);
 }
