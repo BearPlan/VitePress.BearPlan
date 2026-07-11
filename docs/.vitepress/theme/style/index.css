@@ -44,9 +44,10 @@ html.nature-bg .VPHero {
   flex: 1 0 auto;
 }
 
-/* 八格固定高度，始终贴在视口底部 */
+/* 八格固定高度，底部留出间距，避免紧贴视口底部 */
 html.nature-bg .VPFeatures {
   flex: 0 0 auto;
+  margin-bottom: 24px;
 }
 
 /* 导航栏：毛玻璃化，让背景透出顶部；保持可读 */
