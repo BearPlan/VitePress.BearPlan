@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as e,a0 as t}from"./chunks/framework.CAcMrZkh.js";const k=JSON.parse('{"title":"部署","description":"","frontmatter":{},"headers":[],"relativePath":"core/deploy.md","filePath":"core/deploy.md"}'),i={name:"core/deploy.md"};function l(p,a,r,d,o,h){return e(),n("div",null,a[0]||(a[0]=[t("",15)]))}const g=s(i,[["render",l]]);export{k as __pageData,g as default};
