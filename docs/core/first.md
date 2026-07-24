@@ -18,5 +18,3 @@
 [C# .NET8](https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/)
 
 [SqlSugar](https://www.donet5.com/)
-
-[ApeVolo-框架](http://doc.apevolo.com/)

@@ -108,5 +108,5 @@ var cache = App.GetService<ICache>();
 
 ## 下一步
 
-- 阅读 [框架介绍](/support/framework) 了解 Core 在整体架构中的定位。
+- 阅读 [框架介绍](/core/framework) 了解 Core 在整体架构中的定位。
 - 前往 [Core 仓库](https://gitee.com/BearPlan/BearPlan.NET.Core) 查看完整源码与模块文档。
