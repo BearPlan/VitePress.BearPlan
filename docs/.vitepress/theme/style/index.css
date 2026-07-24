@@ -29,14 +29,16 @@ html.nature-bg .VPHome {
   background: transparent;
 }
 
-/* VPHome 作为 flex 列容器撑满「视口 − 导航栏」：
-   Hero flex:1 吃掉剩余空间把八格顶到底，八格固定高度贴底。
+/* VPHome 作为 flex 列容器撑满「视口 − 导航栏 − 页脚」：
+   Hero flex:1 吃掉剩余空间把八格顶到底，八格固定高度贴底，页脚紧跟其后。
    绝不在这里给 VPHero 加 display:flex——会破坏它内部 container
-   的 main/image 左右排版。VPHero 保持默认 display，仅用 flex:1 撑高 */
+   的 main/image 左右排版。VPHero 保持默认 display，仅用 flex:1 撑高。
+   注意：VitePress 中 .VPFooter 是 .VPContent 的兄弟节点，不在 VPHome 内，
+   这里按页脚高度（约 60px）从视口减去，保证首页同屏不出现明显滚动条 */
 html.nature-bg .VPHome {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--vp-nav-height));
+  min-height: calc(100vh - var(--vp-nav-height) - 60px);
   margin-bottom: 0;
 }
 
@@ -96,9 +98,33 @@ html.dark.nature-bg .VPNavBar .VPNavBarTitle .title {
   color: transparent;
 }
 
-/* 首页隐藏页脚：Hero + 八格同屏铺满，无滚动条 */
+/* 首页页脚：透明背景，适配自然动态主题，显示备案号 */
 html.nature-bg .VPFooter {
-  display: none;
+  background: transparent !important;
+  border-top: none !important;
+  padding: 16px 24px !important;
+}
+
+html.nature-bg .VPFooter .copyright,
+html.nature-bg .VPFooter .message {
+  color: rgba(0, 0, 0, 0.66);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+html.dark.nature-bg .VPFooter .copyright,
+html.dark.nature-bg .VPFooter .message {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+html.nature-bg .VPFooter .message a {
+  color: var(--vp-c-brand);
+  text-decoration: none;
+  transition: opacity .2s ease;
+}
+
+html.nature-bg .VPFooter .message a:hover {
+  opacity: 0.75;
 }
 
 /* ============================================================

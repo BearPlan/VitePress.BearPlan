@@ -15,7 +15,7 @@ hero:
   actions:
     - theme: brand
       text: 项目地址
-      link: https://gitee.com/ByteXiong/BearPlan
+      link: https://gitee.com/BearPlan/BearPlan.NET
     - theme: alt
       text: 博客
       link: /api-examples
