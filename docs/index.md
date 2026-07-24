@@ -18,7 +18,7 @@ hero:
       link: https://gitee.com/BearPlan/BearPlan.NET
     - theme: alt
       text: 博客
-      link: /api-examples
+      link: /blog/frontend/create-component.md
 
 features:
   - title: "🌐 多端覆盖"

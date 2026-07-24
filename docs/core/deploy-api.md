@@ -36,7 +36,7 @@ docker --version
 后端依赖 MySQL（或 SQLite）、Redis、可选 RabbitMQ。确认这些服务已部署且 BearPlan.Api 容器能访问。如果中间件跑在宿主机上，需要：
 
 1. 中间件监听 `0.0.0.0`（不是 `127.0.0.1`）。
-2. 防火墙放行 docker 网段访问对应端口，详见 [Docker 被防火墙拦截](/blog/docker-firewall-allow-subnet)。
+2. 防火墙放行 docker 网段访问对应端口，详见 [Docker 被防火墙拦截](/blog/deploy/docker-firewall-allow-subnet)。
 
 ## 第一步：本机发布
 
@@ -287,7 +287,7 @@ cd /data/udhold.api
 3. 防火墙是否放行 docker 网段（`iptables -L INPUT`）。
 4. 连接字符串 `Server` 是否写了宿主机真实网卡 IP（不是 localhost）。
 
-详见 [Docker 被防火墙拦截](/blog/docker-firewall-allow-subnet)。
+详见 [Docker 被防火墙拦截](/blog/deploy/docker-firewall-allow-subnet)。
 
 ### 启动报 `Could not find ip2region.xdb`
 

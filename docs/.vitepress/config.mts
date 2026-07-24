@@ -12,19 +12,45 @@ export default defineConfig({
     ]
   ],
   base: '/',
+  // 浏览器标签页标题：保留完整长标题，利于 SEO 与书签识别
   title: "BearPlan - .NET全栈开源平台",
   description: "轻量灵活的 C# 核心库",
   appearance: 'dark',
   themeConfig: {
     logo: "/image/logo.png",
     nav: [
-      { text: '文档', link: '/core/framework.md' },
-      { text: 'API', link: '/api-examples' },
-      { text: '博客', link: '/blog/create-component.md' },
+      { text: '文档', link: '/core/first.md' },
+      { text: '博客', link: '/blog/frontend/create-component.md' },
        { text: '链接',
         items: [
-          { text: 'gitee', link: 'https://gitee.com/BearPlan/BearPlan.NET' },
-          { text: 'github', link: 'https://github.com/BearPlan/BearPlan.NET' },
+          {
+            text: 'BearPlan.NET（主项目）',
+            items: [
+              { text: 'GitHub', link: 'https://github.com/BearPlan/BearPlan.NET' },
+              { text: 'Gitee',  link: 'https://gitee.com/BearPlan/BearPlan.NET' }
+            ]
+          },
+          {
+            text: 'BearPlan.NET.Core',
+            items: [
+              { text: 'GitHub', link: 'https://github.com/BearPlan/BearPlan.NET.Core' },
+              { text: 'Gitee',  link: 'https://gitee.com/BearPlan/BearPlan.NET.Core' }
+            ]
+          },
+          {
+            text: 'BearPaln.UniApp（开发中）',
+            items: [
+              { text: 'GitHub', link: 'https://github.com/BearPlan/BearPaln.UniApp' },
+              { text: 'Gitee',  link: 'https://gitee.com/BearPlan/BearPaln.UniApp' }
+            ]
+          },
+          {
+            text: 'BearPlan.Admin（开发中）',
+            items: [
+              { text: 'GitHub', link: 'https://github.com/BearPlan/BearPlan.Admin' },
+              { text: 'Gitee',  link: 'https://gitee.com/BearPlan/BearPlan.Admin' }
+            ]
+          }
         ]
        }
     ],
@@ -36,8 +62,32 @@ export default defineConfig({
         {
           text: '概览',
           items: [
-            { text: '框架介绍', link: '/core/framework.md' },
-            { text: '序言', link: '/core/first.md' }
+            { text: '序言', link: '/core/first.md' },
+            { text: '部署总览', link: '/core/deploy.md' }
+          ]
+        },
+        {
+          text: 'BearPlan.NET',
+          collapsed: false,
+          items: [
+            { text: '介绍', link: '/core/framework.md' },
+            { text: '后端部署', link: '/core/deploy-api.md' }
+          ]
+        },
+        {
+          text: 'BearPlan.Admin',
+          collapsed: false,
+          items: [
+            { text: '介绍（开发中）', link: '/core/admin.md' },
+            { text: '前端部署', link: '/core/deploy-admin.md' }
+          ]
+        },
+        {
+          text: 'BearPlan.UniApp',
+          collapsed: false,
+          items: [
+            { text: '介绍（开发中）', link: '/core/uniapp.md' },
+            { text: '移动端部署', link: '/core/deploy-mobile.md' }
           ]
         },
         {
@@ -106,33 +156,50 @@ export default defineConfig({
           ]
         },
         {
-          text: '生态与部署',
+          text: '生态',
           collapsed: false,
           items: [
-            { text: 'AlovaJs', link: '/core/alovajs.md' },
-            { text: '部署总览', link: '/core/deploy.md' },
-            { text: '后端部署（BearPlan.Api）', link: '/core/deploy-api.md' },
-            { text: '前端部署（BearPlan.Admin）', link: '/core/deploy-admin.md' },
-            { text: '移动端部署', link: '/core/deploy-mobile.md' }
+            { text: 'Alova.js', link: '/core/alovajs.md' },
+            { text: 'Worma', link: '/core/worma.md' }
           ]
         }
       ],
       '/blog/': [
         {
-          text: '博客',
+          text: '前端',
+          collapsed: false,
           items: [
-            { text: 'Vue3函数式调用组件', link: '/blog/create-component.md' },
-            { text: '前端Table下载Excel', link: '/blog/excel-download.md' },
-            { text: 'Docker被防火墙拦截', link: '/blog/docker-firewall-allow-subnet.md' },
-            { text: 'VitePress站点Docker部署', link: '/blog/vitepress-docker-deploy.md' }
+            { text: 'Vue3函数式调用组件', link: '/blog/frontend/create-component.md' },
+            { text: '前端Table下载Excel', link: '/blog/frontend/excel-download.md' }
+          ]
+        },
+        {
+          text: '后端',
+          collapsed: false,
+          items: [
+            { text: 'Swagger', link: '/blog/backend/swagger.md' },
+            { text: '全局返回配置', link: '/blog/backend/formatResponseAttribute.md' }
+          ]
+        },
+        {
+          text: '部署',
+          collapsed: false,
+          items: [
+            { text: 'Docker被防火墙拦截', link: '/blog/deploy/docker-firewall-allow-subnet.md' }
           ]
         }
       ]
     },
 
     socialLinks: [
-      { icon: 'gitee', link: 'https://gitee.com/BearPlan/BearPlan.NET' },
-      { icon: 'github', link: 'https://github.com/BearPlan/BearPlan.NET' }
+      { icon: 'github', link: 'https://github.com/BearPlan' },
+      {
+        icon: {
+          light: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333H8.32a4.36 4.36 0 0 0-4.36 4.36v4.36a4.36 4.36 0 0 0 4.36 4.36h6.453a3.65 3.65 0 0 0 3.65-3.65v-1.453H12.5a.85.85 0 1 1 0-1.7h6.728a.85.85 0 0 1 .85.85v2.303a5.45 5.45 0 0 1-5.45 5.45H8.32a6.06 6.06 0 0 1-6.06-6.06V9.693a6.06 6.06 0 0 1 6.06-6.06h9.755a.85.85 0 1 1 0 1.7z" fill="currentColor"/></svg>',
+          dark:  '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333H8.32a4.36 4.36 0 0 0-4.36 4.36v4.36a4.36 4.36 0 0 0 4.36 4.36h6.453a3.65 3.65 0 0 0 3.65-3.65v-1.453H12.5a.85.85 0 1 1 0-1.7h6.728a.85.85 0 0 1 .85.85v2.303a5.45 5.45 0 0 1-5.45 5.45H8.32a6.06 6.06 0 0 1-6.06-6.06V9.693a6.06 6.06 0 0 1 6.06-6.06h9.755a.85.85 0 1 1 0 1.7z" fill="currentColor"/></svg>'
+        },
+        link: 'https://gitee.com/BearPlan'
+      }
     ],
     // 底部页脚：ICP 备案号，点击跳转工信部备案系统
     footer: {

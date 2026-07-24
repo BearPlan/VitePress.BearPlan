@@ -44,7 +44,7 @@ curl -fsSL https://get.docker.com | sh
 sudo systemctl enable --now docker
 ```
 
-如果后端依赖宿主机上的 MySQL / Redis 等中间件，还需配置防火墙放行 docker 网段，详见博客 [Docker 被防火墙拦截](/blog/docker-firewall-allow-subnet)。
+如果后端依赖宿主机上的 MySQL / Redis 等中间件，还需配置防火墙放行 docker 网段，详见博客 [Docker 被防火墙拦截](/blog/deploy/docker-firewall-allow-subnet)。
 
 ## 下一步
 
