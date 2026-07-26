@@ -1,1 +1,0 @@
-import{_ as r,c as a,o as e,a0 as s}from"./chunks/framework.CAcMrZkh.js";const c=JSON.parse('{"title":"序言","description":"","frontmatter":{},"headers":[],"relativePath":"core/first.md","filePath":"core/first.md"}'),n={name:"core/first.md"};function l(o,t,i,d,h,g){return e(),a("div",null,t[0]||(t[0]=[s("",23)]))}const k=r(n,[["render",l]]);export{c as __pageData,k as default};
