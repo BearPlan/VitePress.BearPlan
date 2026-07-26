@@ -2,7 +2,7 @@
 
 > BearPlan.NET 是 BearPlan 的后端工程，基于 .NET 10 + SqlSugar 的分层架构。本文聚焦后端的**整体骨架与分层职责**，帮助读者建立全局认知：一个请求怎么流转、各模块负责什么、依赖方向如何约束。
 
-项目整体背景见 [序言](/core/first)；通用核心库 `BearPlan.Core` 的能力清单见 [Core 介绍](/core/introduction)；后端部署见 [后端部署](/core/deploy-api)。本文不重复这些内容。
+项目整体背景见 [序言](/bearplan/first)；通用核心库 `BearPlan.Core` 的能力清单见 [Core 介绍](/bearplan/introduction)；后端部署见 [后端部署](/bearplan/deploy-api)。本文不重复这些内容。
 
 ## 分层架构
 

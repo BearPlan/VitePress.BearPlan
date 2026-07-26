@@ -9,6 +9,18 @@ export default defineConfig({
         rel: 'icon',
         href: '/image/logo.png'
       }
+    ],
+    // 百度统计：通过 hm.js 上报站点访问数据
+    [
+      'script',
+      {},
+      `var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6583c51fa9b21058eb81e8ade7a097e0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();`
     ]
   ],
   base: '/',
@@ -19,7 +31,7 @@ export default defineConfig({
   themeConfig: {
     logo: "/image/logo.png",
     nav: [
-      { text: '文档', link: '/core/first.md' },
+      { text: '文档', link: '/bearplan/first.md' },
       { text: '博客', link: '/blog/frontend/create-component.md' },
        { text: '链接',
         items: [
@@ -45,7 +57,7 @@ export default defineConfig({
             ]
           },
           {
-            text: 'BearPlan.Admin（开发中）',
+            text: 'BearPlan.Admin',
             items: [
               { text: 'GitHub', link: 'https://github.com/BearPlan/BearPlan.Admin' },
               { text: 'Gitee',  link: 'https://gitee.com/BearPlan/BearPlan.Admin' }
@@ -58,44 +70,44 @@ export default defineConfig({
 
 
     sidebar: {
-      '/core/': [
+      '/bearplan/': [
         {
           text: '概览',
           items: [
-            { text: '序言', link: '/core/first.md' },
-            { text: '部署总览', link: '/core/deploy.md' }
+            { text: '序言', link: '/bearplan/first.md' },
+            { text: '部署总览', link: '/bearplan/deploy.md' }
           ]
         },
         {
-          text: 'BearPlan.NET',
+          text: '.NET',
           collapsed: false,
           items: [
-            { text: '介绍', link: '/core/framework.md' },
-            { text: '后端部署', link: '/core/deploy-api.md' }
+            { text: '介绍', link: '/bearplan/dotnet.md' },
+            { text: '后端部署', link: '/bearplan/deploy-api.md' }
           ]
         },
         {
           text: 'BearPlan.Admin',
           collapsed: false,
           items: [
-            { text: '介绍（开发中）', link: '/core/admin.md' },
-            { text: '前端部署', link: '/core/deploy-admin.md' }
+            { text: '介绍', link: '/bearplan/admin.md' },
+            { text: '前端部署', link: '/bearplan/deploy-admin.md' }
           ]
         },
         {
           text: 'BearPlan.UniApp',
           collapsed: false,
           items: [
-            { text: '介绍（开发中）', link: '/core/uniapp.md' },
-            { text: '移动端部署', link: '/core/deploy-mobile.md' }
+            { text: '介绍（开发中）', link: '/bearplan/uniapp.md' },
+            { text: '移动端部署', link: '/bearplan/deploy-mobile.md' }
           ]
         },
         {
           text: 'BearPlan.Core',
           collapsed: false,
           items: [
-            { text: '介绍', link: '/core/introduction.md' },
-            { text: '快速开始', link: '/core/quickstart.md' },
+            { text: '介绍', link: '/bearplan/introduction.md' },
+            { text: '快速开始', link: '/bearplan/quickstart.md' },
             {
               text: '核心能力',
               collapsed: true,
@@ -104,51 +116,51 @@ export default defineConfig({
                   text: '应用核心',
                   collapsed: true,
                   items: [
-                    { text: 'App / Internal', link: '/core/introduction.md#app-internal' },
-                    { text: 'ConfigOptions', link: '/core/introduction.md#config-options' },
-                    { text: 'Global', link: '/core/introduction.md#global' },
-                    { text: 'Consts', link: '/core/introduction.md#consts' },
-                    { text: 'DI', link: '/core/introduction.md#di' }
+                    { text: 'App / Internal', link: '/bearplan/introduction.md#app-internal' },
+                    { text: 'ConfigOptions', link: '/bearplan/introduction.md#config-options' },
+                    { text: 'Global', link: '/bearplan/introduction.md#global' },
+                    { text: 'Consts', link: '/bearplan/introduction.md#consts' },
+                    { text: 'DI', link: '/bearplan/introduction.md#di' }
                   ]
                 },
                 {
                   text: 'AOP 与中间件',
                   collapsed: true,
                   items: [
-                    { text: 'Attributes', link: '/core/introduction.md#attributes' },
-                    { text: 'Aop', link: '/core/introduction.md#aop' },
-                    { text: 'Middleware', link: '/core/introduction.md#middleware' }
+                    { text: 'Attributes', link: '/bearplan/introduction.md#attributes' },
+                    { text: 'Aop', link: '/bearplan/introduction.md#aop' },
+                    { text: 'Middleware', link: '/bearplan/introduction.md#middleware' }
                   ]
                 },
                 {
                   text: '缓存、日志与多语言',
                   collapsed: true,
                   items: [
-                    { text: 'Caches', link: '/core/introduction.md#caches' },
-                    { text: 'Serilog', link: '/core/introduction.md#serilog' },
-                    { text: 'MultiLanguage', link: '/core/introduction.md#multi-language' }
+                    { text: 'Caches', link: '/bearplan/introduction.md#caches' },
+                    { text: 'Serilog', link: '/bearplan/introduction.md#serilog' },
+                    { text: 'MultiLanguage', link: '/bearplan/introduction.md#multi-language' }
                   ]
                 },
                 {
                   text: '数据模型与映射',
                   collapsed: true,
                   items: [
-                    { text: 'Model', link: '/core/introduction.md#model' },
-                    { text: 'Pager', link: '/core/introduction.md#pager' },
-                    { text: 'Mapping', link: '/core/introduction.md#mapping' },
-                    { text: 'Enums', link: '/core/introduction.md#enums' },
-                    { text: 'Exception', link: '/core/introduction.md#exception' }
+                    { text: 'Model', link: '/bearplan/introduction.md#model' },
+                    { text: 'Pager', link: '/bearplan/introduction.md#pager' },
+                    { text: 'Mapping', link: '/bearplan/introduction.md#mapping' },
+                    { text: 'Enums', link: '/bearplan/introduction.md#enums' },
+                    { text: 'Exception', link: '/bearplan/introduction.md#exception' }
                   ]
                 },
                 {
                   text: '工具与扩展',
                   collapsed: true,
                   items: [
-                    { text: 'Extensions', link: '/core/introduction.md#extensions' },
-                    { text: 'Helper', link: '/core/introduction.md#helper' },
-                    { text: 'IdGenerator', link: '/core/introduction.md#id-generator' },
-                    { text: 'ClassLibrary', link: '/core/introduction.md#class-library' },
-                    { text: 'Fonts', link: '/core/introduction.md#fonts' }
+                    { text: 'Extensions', link: '/bearplan/introduction.md#extensions' },
+                    { text: 'Helper', link: '/bearplan/introduction.md#helper' },
+                    { text: 'IdGenerator', link: '/bearplan/introduction.md#id-generator' },
+                    { text: 'ClassLibrary', link: '/bearplan/introduction.md#class-library' },
+                    { text: 'Fonts', link: '/bearplan/introduction.md#fonts' }
                   ]
                 }
               ]
@@ -159,8 +171,8 @@ export default defineConfig({
           text: '生态',
           collapsed: false,
           items: [
-            { text: 'Alova.js', link: '/core/alovajs.md' },
-            { text: 'Worma', link: '/core/worma.md' }
+            { text: 'Alova.js', link: '/bearplan/alovajs.md' },
+            { text: 'Worma', link: '/bearplan/worma.md' }
           ]
         }
       ],

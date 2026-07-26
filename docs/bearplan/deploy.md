@@ -30,9 +30,9 @@ docker run (aspnet)            docker run (nginx) / 静态托管    分发到各
 
 ## 选择部署方式
 
-- **[后端部署（BearPlan.Api）](/core/deploy-api)** —— 本机发布 + 上传产物 + Docker 运行，生产可用方案。
-- **[前端部署（BearPlan.Admin）](/core/deploy-admin)** —— 多阶段构建打包进 nginx，或托管到 CDN。
-- **[移动端部署](/core/deploy-mobile)** —— Uni-App 多端构建与分发。
+- **[后端部署（BearPlan.Api）](/bearplan/deploy-api)** —— 本机发布 + 上传产物 + Docker 运行，生产可用方案。
+- **[前端部署（BearPlan.Admin）](/bearplan/deploy-admin)** —— 多阶段构建打包进 nginx，或托管到 CDN。
+- **[移动端部署](/bearplan/deploy-mobile)** —— Uni-App 多端构建与分发。
 
 ## 通用前提
 
@@ -48,4 +48,4 @@ sudo systemctl enable --now docker
 
 ## 下一步
 
-从 [后端部署](/core/deploy-api) 开始，后端是前后端通信的基座，通常最先部署。
+从 [后端部署](/bearplan/deploy-api) 开始，后端是前后端通信的基座，通常最先部署。

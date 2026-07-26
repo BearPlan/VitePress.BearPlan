@@ -15,8 +15,8 @@ BearPlan.UniApp（移动端）文档正在撰写中，暂未完成。
 
 当前可阅读：
 
-- [框架介绍](/core/framework) —— 整体架构概览
-- [移动端部署](/core/deploy-mobile) —— 多端构建与分发
+- [框架介绍](/bearplan/dotnet) —— 整体架构概览
+- [移动端部署](/bearplan/deploy-mobile) —— 多端构建与分发
 
 敬请期待。
 :::
