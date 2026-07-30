@@ -1,0 +1,29 @@
+# BearPlan
+
+> BearPlan 是一套面向中后台业务的全栈开源快速开发平台，基于 .NET + SqlSugar 后端与 Vue 3 + Element Plus 前端 + Uni-App 移动端，覆盖 Web、H5、APP、鸿蒙与小程序。目标是让开发者专注业务、不被基础设施拖累，内置权限、多租户、缓存、AOP、定时任务与前后端 API 自动生成能力。
+
+BearPlan 由多个子工程组成：
+- BearPlan.NET：基于 .NET + SqlSugar 的后端主项目，分层架构
+- BearPlan.NET.Core：业务中立的通用框架核心库，可独立发布为 NuGet 包
+- BearPlan.Admin：基于 Vue 3 + Element Plus 的前端管理后台
+- BearPlan.UniApp：基于 Uni-App 的多端移动端工程
+
+代码托管在 GitHub (https://github.com/BearPlan) 与 Gitee (https://gitee.com/BearPlan)。
+
+## 文档
+
+- [序言](https://bear.js.org/core/first): BearPlan 项目定位、解决什么问题、适合谁
+- [部署总览](https://bear.js.org/core/deploy): 后端、前端、移动端三条独立部署链路概览
+- [BearPlan.NET 后端介绍](https://bear.js.org/core/framework): 后端分层架构与各模块职责
+- [BearPlan.Core 核心库能力清单](https://bear.js.org/core/introduction): 业务中立核心库的权限、缓存、日志、ORM、AOP 等能力域
+- [BearPlan.Core 快速开始](https://bear.js.org/core/quickstart): 通过 Git Submodule 或 NuGet 引入核心库
+- [后端部署](https://bear.js.org/core/deploy-api): BearPlan.Api 本机发布 + Docker 运行方案
+- [前端部署](https://bear.js.org/core/deploy-admin): BearPlan.Admin 静态文件部署方案
+- [移动端部署](https://bear.js.org/core/deploy-mobile): Uni-App 多端构建与分发
+- [BearPlan.Admin 前端管理后台](https://bear.js.org/core/admin): 前端架构介绍（撰写中）
+- [BearPlan.UniApp 移动端](https://bear.js.org/core/uniapp): 移动端工程介绍（撰写中）
+
+## 生态
+
+- [Alova.js 请求层集成](https://bear.js.org/core/alovajs): 前端请求层，hook 自动管理状态
+- [Worma API 自动生成工具](https://bear.js.org/core/worma): 从 swagger 自动生成前端 API 与 TypeScript 类型
