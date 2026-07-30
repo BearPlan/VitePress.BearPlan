@@ -34,15 +34,6 @@ const jsonLd = [
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  head:[
-    [
-      'link',
-      {
-        rel: 'icon',
-        href: '/image/logo.png'
-      }
-    ]
-  ],
   base: '/',
   // 浏览器标签页标题：保留完整长标题，利于 SEO 与书签识别
   title: SITE_TITLE,

@@ -74,4 +74,4 @@ BearPlan 是一套面向中后台业务的全栈开源快速开发平台，目�
 
 **如何开始使用 BearPlan？**
 
-阅读 [序言](/core/first.md) 了解项目定位，参考 [Core 快速开始](/core/quickstart.md) 引入核心库，或查看 [.NET 介绍](/core/framework.md) 理解后端分层架构。
+阅读 [序言](/bearplan/first.md) 了解项目定位，参考 [Core 快速开始](/bearplan/quickstart.md) 引入核心库，或查看 [.NET 介绍](/bearplan/dotnet.md) 理解后端分层架构。
