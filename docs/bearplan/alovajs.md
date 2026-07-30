@@ -5,7 +5,7 @@ description: "BearPlan.Admin 前端请求层基于 Alova.js：用 hook 自动管
 
 # Alova.js
 
-> BearPlan.Admin 的请求层。alova 用 hook 自管 `loading` / `data` / `error`，配合 [Worma](/core/worma) 自动生成的 API 代理，把"写请求函数 + 手维护 loading"压缩为解构一个 hook。
+> BearPlan.Admin 的请求层。alova 用 hook 自管 `loading` / `data` / `error`，配合 [Worma](/bearplan/worma) 自动生成的 API 代理，把"写请求函数 + 手维护 loading"压缩为解构一个 hook。
 
 ## 这是什么
 
@@ -20,7 +20,7 @@ alova 是一个请求策略库，定位类似 axios，但更进一步——把�
 
 BearPlan 选 alova 的核心原因是 **与 Worma 配套**：Worma 从后端 swagger 自动生成 `Apis` 代理与 TypeScript 类型，页面用 alova hook 消费它，**后端接口变更 → 前端重新生成即可同步**，告别手写请求函数。
 
-整体架构与前后端协同见 [框架介绍](/core/framework)，API 自动生成机制见 [Worma](/core/worma)。本文聚焦请求库本身。
+整体架构与前后端协同见 [框架介绍](/bearplan/dotnet)，API 自动生成机制见 [Worma](/bearplan/worma)。本文聚焦请求库本身。
 
 ## 在 BearPlan 中的位置
 
@@ -28,7 +28,7 @@ BearPlan 选 alova 的核心原因是 **与 Worma 配套**：Worma 从后端 swa
 后端 swagger.json
        │
        ▼
-Worma 生成 Apis 代理 + TypeScript 类型（详见 /core/worma）
+Worma 生成 Apis 代理 + TypeScript 类型（详见 /bearplan/worma）
        │
        ▼
 页面用 alova hook 消费 Apis.{tag}.{method}()
@@ -204,7 +204,7 @@ BearPlan 项目对 alova hooks 解构别名有统一约定，详见书写规范�
 ## 关联资源
 
 - **alova 官方文档**：<https://alova.js.org/>
-- **Worma（API 自动生成）**：见 [Worma](/core/worma)
+- **Worma（API 自动生成）**：见 [Worma](/bearplan/worma)
 - **主项目仓库**：<https://gitee.com/BearPlan/BearPlan.NET>
 - **Core 独立仓库**：<https://gitee.com/BearPlan/BearPlan.NET.Core>
 - **开发文档**：<https://bear.js.org/>

@@ -155,4 +155,4 @@ description: "BearPlan.Core 是业务中立的 .NET 通用框架核心库，抽�
 - **开发文档**：<https://bear.js.org/>
 - **作者微信**：Byte_Xiong（备注：框架）
 
-准备好开始使用？前往 [快速开始](/core/quickstart) 了解引入方式。
+准备好开始使用？前往 [快速开始](/bearplan/quickstart) 了解引入方式。

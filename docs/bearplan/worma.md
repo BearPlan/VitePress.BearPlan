@@ -36,7 +36,7 @@ Worma 是 `@alova/wormhole` 的官方继任者。原包已废弃，演进关系�
 **worma** 是项目名与官方站点（<https://worma.js.org/>），**`wormajs`** 是 npm 包名（`pnpm add wormajs`）。安装时认包名，书写时认项目名。
 :::
 
-本文以 worma 为基准（与 BearPlan.Admin 实际栈一致）。整体架构与前后端协同见 [框架介绍](/core/framework)，alova hooks 调用见 [Alova.js](/core/alovajs)。
+本文以 worma 为基准（与 BearPlan.Admin 实际栈一致）。整体架构与前后端协同见 [框架介绍](/bearplan/dotnet)，alova hooks 调用见 [Alova.js](/bearplan/alovajs)。
 
 ## 工作机制
 
@@ -163,7 +163,7 @@ const {
 
 - `{tag}`：由 swagger 的 tag 决定（通常对应后端 Controller 名，如 `device`、`WeiXin`）。
 - `{method}`：PascalCase 命名，保留后端 Action 名（如 `GetPage`、`CreateQrcode`）。
-- 返回值是 alova Method 实例，可交给 `useRequest` / `useForm` / `usePagination`，详见 [Alova.js](/core/alovajs)。
+- 返回值是 alova Method 实例，可交给 `useRequest` / `useForm` / `usePagination`，详见 [Alova.js](/bearplan/alovajs)。
 
 ::: warning 不要手动修改自动生成文件
 `src/api/` 下的 `apiDefinitions.ts` / `createApis.ts` / `globals.d.ts` 是自动生成的，**任何手动修改都会在下次生成时被覆盖**。新增接口应改后端 Controller 后重新生成，自定义逻辑写在 hook 调用层。
@@ -210,7 +210,7 @@ BearPlan.Admin 在标准 worma 配置之上，通过 `dynamic-enums` 自定义�
 
 - **Worma 官方文档**：<https://worma.js.org/docs>
 - **alova 官方文档**：<https://alova.js.org/>
-- **请求库用法**：见 [Alova.js](/core/alovajs)
+- **请求库用法**：见 [Alova.js](/bearplan/alovajs)
 - **主项目仓库**：<https://gitee.com/BearPlan/BearPlan.NET>
 - **Core 独立仓库**：<https://gitee.com/BearPlan/BearPlan.NET.Core>
 - **开发文档**：<https://bear.js.org/>

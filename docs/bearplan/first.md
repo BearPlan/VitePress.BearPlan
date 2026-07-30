@@ -47,11 +47,11 @@ BearPlan 是前后端分离、多端覆盖的开源开发平台：
 | **请求层** | [Alova.js](https://alova.js.org/) |
 | **移动端** | Uni-App |
 
-更多细节见 [框架介绍](/core/framework)。
+更多细节见 [框架介绍](/bearplan/dotnet)。
 
 ## 如何开始
 
-1. **了解整体架构**：阅读 [框架介绍](/core/framework)，理解分层与依赖方向。
+1. **了解整体架构**：阅读 [框架介绍](/bearplan/dotnet)，理解分层与依赖方向。
 2. **拉取项目**：主项目通过 Git Submodule 引入 Core：
 
    ```bash
@@ -63,16 +63,16 @@ BearPlan 是前后端分离、多端覆盖的开源开发平台：
    ```
 
 3. **启动运行**：默认账号 `admin / 123456`。
-4. **部署上线**：参考 [部署总览](/core/deploy)，按端选择部署方式。
+4. **部署上线**：参考 [部署总览](/bearplan/deploy)，按端选择部署方式。
 
 ## 文档导航
 
 | 文档 | 内容 |
 | --- | --- |
-| [框架介绍](/core/framework) | 整体架构、分层职责、依赖关系 |
-| [BearPlan.Core 介绍](/core/introduction) | 通用核心库的能力清单 |
-| [快速开始](/core/quickstart) | Core 的两种引入方式（Submodule / NuGet） |
-| [部署总览](/core/deploy) | 前端、后端、移动端的部署方式 |
+| [框架介绍](/bearplan/dotnet) | 整体架构、分层职责、依赖关系 |
+| [BearPlan.Core 介绍](/bearplan/introduction) | 通用核心库的能力清单 |
+| [快速开始](/bearplan/quickstart) | Core 的两种引入方式（Submodule / NuGet） |
+| [部署总览](/bearplan/deploy) | 前端、后端、移动端的部署方式 |
 
 ## 相关资源
 
