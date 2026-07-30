@@ -1,3 +1,8 @@
+---
+title: "前端部署 - BearPlan.Admin"
+description: "BearPlan.Admin 前端部署方案：基于 Vue 3 + Vite + Element Plus 的管理后台，pnpm build 生成纯静态文件，可部署到 nginx 容器或任意静态服务器。"
+---
+
 # 前端部署（BearPlan.Admin）
 
 ::: warning 🚧 开发中

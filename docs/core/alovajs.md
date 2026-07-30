@@ -1,3 +1,8 @@
+---
+title: "Alova.js 请求层集成"
+description: "BearPlan.Admin 前端请求层基于 Alova.js：用 hook 自动管理 loading/data/error，配合 Worma 自动生成的 API 代理，把写请求函数与手动维护状态压缩为解构一个 hook。"
+---
+
 # Alova.js
 
 > BearPlan.Admin 的请求层。alova 用 hook 自管 `loading` / `data` / `error`，配合 [Worma](/core/worma) 自动生成的 API 代理，把"写请求函数 + 手维护 loading"压缩为解构一个 hook。

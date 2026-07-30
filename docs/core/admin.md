@@ -1,3 +1,8 @@
+---
+title: "BearPlan.Admin 前端管理后台"
+description: "BearPlan.Admin 是基于 Vue 3 + Element Plus + SoybeanAdmin 的前端管理后台，集成 Alova.js 接口自动生成、权限路由、国际化与 UnoCSS 主题定制。文档撰写中。"
+---
+
 # BearPlan.Admin
 
 ::: warning 🚧 开发中

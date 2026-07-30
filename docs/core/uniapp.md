@@ -1,3 +1,8 @@
+---
+title: "BearPlan.UniApp 移动端"
+description: "BearPlan.UniApp 是基于 Uni-App 的移动端工程，一套代码编译到 H5、各平台小程序、App 与鸿蒙，使用 Wot Design Uni 组件库。文档撰写中。"
+---
+
 # BearPlan.UniApp
 
 ::: warning 🚧 开发中

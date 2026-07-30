@@ -1,3 +1,8 @@
+---
+title: "Worma - API 自动生成工具"
+description: "Worma 是 alova 官方 OpenAPI 代码生成工具继任者，从后端 swagger 自动生成前端 API 调用代码与完整 TypeScript 类型，配合 VS Code 扩展，把前后端 API 对接流程从 7 步压缩为 1 步。"
+---
+
 # Worma
 
 > alova 官方 OpenAPI 代码生成工具的继任者。Worma 从后端 swagger 自动生成前端 API 调用代码与完整的 TypeScript 类型，配合 VS Code 扩展提供生成、浏览、跳转能力——把"写请求函数 + 手维护类型"的 7 步流程压缩为 1 步。BearPlan.Admin 已迁移至此。

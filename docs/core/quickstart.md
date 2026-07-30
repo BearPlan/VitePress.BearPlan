@@ -1,3 +1,8 @@
+---
+title: "BearPlan.Core 快速开始"
+description: "BearPlan.Core 快速开始指南：提供 Git Submodule 源码编译与 NuGet 包二进制引用两种引入方式，按需选择，覆盖引入、引用、配置到首次调用的完整流程。"
+---
+
 # 快速开始
 
 BearPlan.Core 提供两种引入方式，按需选择：

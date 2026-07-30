@@ -1,3 +1,8 @@
+---
+title: "移动端部署 - Uni-App 多端分发"
+description: "BearPlan 移动端基于 Uni-App，一套代码编译到 H5、微信/支付宝小程序、Android/iOS App、鸿蒙多个平台，各平台构建方式、产物格式与分发渠道不同，需分别处理。"
+---
+
 # 移动端部署
 
 ::: warning 🚧 开发中

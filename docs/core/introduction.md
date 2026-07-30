@@ -1,3 +1,8 @@
+---
+title: "BearPlan.Core 核心库能力清单"
+description: "BearPlan.Core 是业务中立的 .NET 通用框架核心库，抽离权限、缓存、日志、ORM、AOP、多语言、工具类等通用能力，可独立发布为 NuGet 包，作为任意 .NET 项目的底层基座。"
+---
+
 # BearPlan.Core
 
 > BearPlan 的通用框架核心库 —— 抽离权限、缓存、日志、ORM 等通用能力，业务无关、开箱即用，可作为任意 .NET 项目的底层基座。

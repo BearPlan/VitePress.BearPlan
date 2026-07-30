@@ -1,3 +1,8 @@
+---
+title: "后端部署 - BearPlan.Api"
+description: "BearPlan.Api 后端部署方案：采用本机 dotnet publish 发布 + 上传产物 + Docker 运行 aspnet 镜像的方式，服务器零 SDK 依赖、构建环境可控、镜像仅约 200MB。"
+---
+
 # 后端部署（BearPlan.Api）
 
 BearPlan.Api 是基于 .NET 10 的后端服务，采用 **本机发布 + 上传产物 + Docker 运行** 的部署方式：开发机用 `dotnet publish` 生成完整运行时文件，上传到服务器，用精简的 aspnet 镜像直接跑。

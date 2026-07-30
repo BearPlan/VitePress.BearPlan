@@ -1,21 +1,90 @@
 import { defineConfig } from 'vitepress'
 
+// 站点级常量：SEO / GEO 统一引用，避免散落硬编码
+const SITE_URL = 'https://bear.js.org'
+const SITE_NAME = 'BearPlan'
+const SITE_TITLE = 'BearPlan - .NET 全栈开源平台'
+const SITE_DESC =
+  'BearPlan —— 基于 .NET / SqlSugar / Vue 3 / Uni-App 的全栈开源平台，覆盖 Web、H5、APP、鸿蒙与小程序，集成权限、多租户、缓存、AOP 与前后端 API 自动生成。'
+const OG_IMAGE = '/image/logo.png'
+const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE}`
+
+// 站点级结构化数据：帮助 Google 富结果与 AI 引擎理解站点实体
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/image/logo.png`,
+    sameAs: [
+      'https://github.com/BearPlan',
+      'https://gitee.com/BearPlan'
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: SITE_DESC,
+    inLanguage: 'zh-CN'
+  }
+]
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  head:[
-    [
-      'link',
-      {
-        rel: 'icon',
-        href: '/image/logo.png'
-      }
-    ]
-  ],
+  // 中文站点显式声明 lang，利于搜索引擎与 AI 引擎判定内容语言
+  lang: 'zh-CN',
   base: '/',
   // 浏览器标签页标题：保留完整长标题，利于 SEO 与书签识别
-  title: "BearPlan - .NET全栈开源平台",
-  description: "轻量灵活的 C# 核心库",
+  title: SITE_TITLE,
+  description: SITE_DESC,
   appearance: 'dark',
+  // 启用 VitePress 内置 sitemap，构建时自动生成 sitemap.xml 到 dist
+  sitemap: {
+    hostname: SITE_URL
+  },
+  head: [
+    ['link', { rel: 'icon', href: '/image/logo.png' }],
+    // Open Graph 静态部分：社交平台分享卡片
+    ['meta', { property: 'og:site_name', content: SITE_NAME }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ['meta', { property: 'og:image', content: OG_IMAGE_URL }],
+    ['meta', { property: 'og:image:alt', content: SITE_NAME }],
+    // Twitter / X 分享卡片
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:image', content: OG_IMAGE_URL }],
+    // 结构化数据：Organization + WebSite，供搜索引擎富结果与 AI 引擎引用
+    ['script', { type: 'application/ld+json' }, JSON.stringify(jsonLd[0])],
+    ['script', { type: 'application/ld+json' }, JSON.stringify(jsonLd[1])]
+  ],
+  // 逐页动态注入 canonical / og:url / og:title / og:description
+  // 静态全站标签放 head 数组，逐页差异化标签放 transformHead，职责分离
+  transformHead({ pageData }) {
+    // relativePath 形如 'core/first.md'；首页为 'index.md'
+    // canonical 需与 sitemap 默认产物一致（非 cleanUrls 时带 .html 后缀）
+    const relative = pageData.relativePath
+    const path =
+      relative === 'index.md'
+        ? ''
+        : relative.replace(/\.md$/, '.html')
+    const url = `${SITE_URL}/${path}`
+    const title = pageData.frontmatter.title
+      ? `${pageData.frontmatter.title} | ${SITE_NAME}`
+      : SITE_TITLE
+    const description = pageData.frontmatter.description || SITE_DESC
+
+    return [
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }]
+    ]
+  },
   themeConfig: {
     logo: "/image/logo.png",
     nav: [

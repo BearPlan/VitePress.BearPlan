@@ -1,3 +1,8 @@
+---
+title: "BearPlan.NET 后端介绍"
+description: "BearPlan.NET 后端工程介绍：基于 .NET + SqlSugar 的严格分层架构，依赖自上而下，覆盖 Api 入口、Infrastructure 装配层、业务服务、仓储、实体与业务中立的 Core 核心库。"
+---
+
 # BearPlan.NET 介绍
 
 > BearPlan.NET 是 BearPlan 的后端工程，基于 .NET 10 + SqlSugar 的分层架构。本文聚焦后端的**整体骨架与分层职责**，帮助读者建立全局认知：一个请求怎么流转、各模块负责什么、依赖方向如何约束。
