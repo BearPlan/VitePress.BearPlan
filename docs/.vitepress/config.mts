@@ -244,6 +244,7 @@ export default defineConfig({
           text: '后端',
           collapsed: false,
           items: [
+            { text: '微信扫码登录', link: '/blog/backend/weixin-scan-login.md' },
             { text: 'Swagger', link: '/blog/backend/swagger.md' },
             { text: '全局返回配置', link: '/blog/backend/formatResponseAttribute.md' }
           ]
