@@ -1,3 +1,9 @@
+---
+title: "前端 Table 下载 Excel"
+description: "基于已渲染表格 DOM 直接导出 .xls 文件，无需调用后端接口，Vue 3.5 useTemplateRef 获取组件实例并传入下载函数的完整实现。"
+date: 2026-07-24
+---
+
 # 前端 Table 下载 Excel
 
 业务列表页的表格本质上就是一个 Table 组件，导出 Excel 时无需调用后端接口，可直接基于已渲染的 DOM 生成 `.xls` 文件。

@@ -12,18 +12,25 @@ BearPlan 由多个子工程组成：
 
 ## 文档
 
-- [序言](https://bear.js.org/core/first): BearPlan 项目定位、解决什么问题、适合谁
-- [部署总览](https://bear.js.org/core/deploy): 后端、前端、移动端三条独立部署链路概览
-- [BearPlan.NET 后端介绍](https://bear.js.org/core/framework): 后端分层架构与各模块职责
-- [BearPlan.Core 核心库能力清单](https://bear.js.org/core/introduction): 业务中立核心库的权限、缓存、日志、ORM、AOP 等能力域
-- [BearPlan.Core 快速开始](https://bear.js.org/core/quickstart): 通过 Git Submodule 或 NuGet 引入核心库
-- [后端部署](https://bear.js.org/core/deploy-api): BearPlan.Api 本机发布 + Docker 运行方案
-- [前端部署](https://bear.js.org/core/deploy-admin): BearPlan.Admin 静态文件部署方案
-- [移动端部署](https://bear.js.org/core/deploy-mobile): Uni-App 多端构建与分发
-- [BearPlan.Admin 前端管理后台](https://bear.js.org/core/admin): 前端架构介绍（撰写中）
-- [BearPlan.UniApp 移动端](https://bear.js.org/core/uniapp): 移动端工程介绍（撰写中）
+- [序言](https://bear.js.org/bearplan/first): BearPlan 项目定位、解决什么问题、适合谁
+- [部署总览](https://bear.js.org/bearplan/deploy): 后端、前端、移动端三条独立部署链路概览
+- [BearPlan.NET 后端介绍](https://bear.js.org/bearplan/dotnet): 后端分层架构与各模块职责
+- [BearPlan.Core 核心库能力清单](https://bear.js.org/bearplan/introduction): 业务中立核心库的权限、缓存、日志、ORM、AOP 等能力域
+- [BearPlan.Core 快速开始](https://bear.js.org/bearplan/quickstart): 通过 Git Submodule 或 NuGet 引入核心库
+- [后端部署](https://bear.js.org/bearplan/deploy-api): BearPlan.Api 本机发布 + Docker 运行方案
+- [前端部署](https://bear.js.org/bearplan/deploy-admin): BearPlan.Admin 静态文件部署方案
+- [移动端部署](https://bear.js.org/bearplan/deploy-mobile): Uni-App 多端构建与分发
+- [BearPlan.Admin 前端管理后台](https://bear.js.org/bearplan/admin): 基于 SoybeanAdmin 深度定制的前端架构介绍
+- [BearPlan.UniApp 移动端](https://bear.js.org/bearplan/uniapp): 多端移动端工程介绍（开发中）
 
 ## 生态
 
-- [Alova.js 请求层集成](https://bear.js.org/core/alovajs): 前端请求层，hook 自动管理状态
-- [Worma API 自动生成工具](https://bear.js.org/core/worma): 从 swagger 自动生成前端 API 与 TypeScript 类型
+- [Alova.js 请求层集成](https://bear.js.org/bearplan/alovajs): 前端请求层，hook 自动管理状态
+- [Worma API 自动生成工具](https://bear.js.org/bearplan/worma): 从 swagger 自动生成前端 API 与 TypeScript 类型
+
+## 博客
+
+- [微信扫码登录：从公众号二维码到 Electron 桌面端的全链路实现](https://bear.js.org/blog/backend/weixin-scan-login): 用认证服务号带参二维码实现扫码登录的架构、实现与踩坑记录
+- [Vue3 函数式调用组件](https://bear.js.org/blog/frontend/create-component): 动态挂载组件、事件监听与卸载销毁的函数式封装
+- [前端 Table 下载 Excel](https://bear.js.org/blog/frontend/excel-download): 基于已渲染表格 DOM 免后端导出 .xls 文件
+- [Docker 被防火墙拦截的排查与修复](https://bear.js.org/blog/deploy/docker-firewall-allow-subnet): 容器连不上宿主机端口的 UFW 根因分析与修复

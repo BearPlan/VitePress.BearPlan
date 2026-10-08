@@ -1,4 +1,10 @@
-**Docker 被防火墙拦截的排查与修复**
+---
+title: "Docker 被防火墙拦截的排查与修复"
+description: "容器能 ping 通宿主机却连不上 MySQL / Redis 端口：UFW INPUT 链默认 DROP 丢弃 docker 网段流量的根因分析、排查步骤与 allow 子网修复方案。"
+date: 2026-07-24
+---
+
+# Docker 被防火墙拦截的排查与修复
 
 ## 背景
 
