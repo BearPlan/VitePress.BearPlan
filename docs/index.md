@@ -21,6 +21,9 @@ hero:
     - theme: alt
       text: 博客
       link: /blog/frontend/create-component.md
+    - theme: alt
+      text: 项目演示
+      link: https://bearplan.net
 
 features:
   - title: "🌐 多端覆盖"
