@@ -34,26 +34,50 @@ onBeforeUnmount(() => {
       <!-- 云朵图形定义：两种蓬松轮廓复用，fill 取 currentColor 随明暗切换 -->
       <svg class="cloud-defs" aria-hidden="true">
         <defs>
-          <!-- 云朵内部明暗渐变：顶部受光亮 → 底部背光暗，呈现云体内部体积（亮色底偏冷灰蓝）-->
-          <linearGradient id="cloud-grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#ffffff" />
-            <stop offset="0.5" stop-color="#f4f7fb" />
-            <stop offset="1" stop-color="#d2dde9" />
+          <!-- 蓬松云：多圆团并集成一朵，整幅 userSpaceOnUse 纵向渐变让所有圆团与云底
+               采样同一渐变场——拼接处颜色连续，无"圆球拼贴"接缝；底部另有投影椭圆。
+               stop 颜色用内联 var() 引用 CSS 变量——use 影子树里类选择器不生效，
+               但自定义属性可穿透继承，亮暗色板见非 scoped 样式块 .cloud-defs -->
+          <linearGradient id="puff-grad" gradientUnits="userSpaceOnUse" x1="0" y1="18" x2="0" y2="88">
+            <stop offset="0" style="stop-color: var(--cg1, #ffffff)" />
+            <stop offset="0.55" style="stop-color: var(--cg2, #f4f8fb)" />
+            <stop offset="1" style="stop-color: var(--cg3, #d8e2ec)" />
           </linearGradient>
-          <!-- 暗色：顶部淡亮 → 底部深冷蓝，夜空剪影保留内部明暗 -->
-          <linearGradient id="cloud-grad-dark" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#c8d4ee" />
-            <stop offset="0.55" stop-color="#8e9dc4" />
-            <stop offset="1" stop-color="#566389" />
-          </linearGradient>
+          <radialGradient id="cloud-under-grad" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" style="stop-color: var(--cu1, #8ca5c3); stop-opacity: var(--cuo1, 0.4)" />
+            <stop offset="1" style="stop-color: var(--cu1, #8ca5c3); stop-opacity: 0" />
+          </radialGradient>
         </defs>
-        <symbol id="cloud-a" viewBox="0 0 120 56">
-          <path
-            d="M6 50 Q-4 38 8 34 Q4 20 22 22 Q26 6 48 12 Q60 0 80 10 Q100 4 104 22 Q120 22 114 38 Q122 54 104 50 L6 50 Z"
-          />
+        <!-- 云形 A：饱满大积云（分层填色为硬编码属性，随渐变换色） -->
+        <symbol id="cloud-a" viewBox="0 0 200 100">
+          <ellipse fill="url(#cloud-under-grad)" cx="100" cy="86" rx="82" ry="12" />
+          <rect fill="url(#puff-grad)" x="18" y="62" width="164" height="24" rx="14" />
+          <circle fill="url(#puff-grad)" cx="34" cy="68" r="18" />
+          <circle fill="url(#puff-grad)" cx="58" cy="56" r="26" />
+          <circle fill="url(#puff-grad)" cx="96" cy="42" r="34" />
+          <circle fill="url(#puff-grad)" cx="122" cy="30" r="20" />
+          <circle fill="url(#puff-grad)" cx="138" cy="50" r="28" />
+          <circle fill="url(#puff-grad)" cx="168" cy="66" r="18" />
         </symbol>
-        <symbol id="cloud-b" viewBox="0 0 120 56">
-          <path d="M10 50 Q0 40 10 34 Q6 22 24 22 Q30 8 54 14 Q74 4 92 16 Q110 14 112 32 Q122 40 112 50 L10 50 Z" />
+        <!-- 云形 B：低宽层云 -->
+        <symbol id="cloud-b" viewBox="0 0 200 100">
+          <ellipse fill="url(#cloud-under-grad)" cx="100" cy="84" rx="86" ry="11" />
+          <rect fill="url(#puff-grad)" x="12" y="66" width="176" height="18" rx="12" />
+          <circle fill="url(#puff-grad)" cx="36" cy="66" r="16" />
+          <circle fill="url(#puff-grad)" cx="70" cy="54" r="26" />
+          <circle fill="url(#puff-grad)" cx="108" cy="44" r="30" />
+          <circle fill="url(#puff-grad)" cx="148" cy="58" r="24" />
+          <circle fill="url(#puff-grad)" cx="172" cy="70" r="14" />
+        </symbol>
+        <!-- 云形 C：小团碎云 -->
+        <symbol id="cloud-c" viewBox="0 0 200 100">
+          <ellipse fill="url(#cloud-under-grad)" cx="100" cy="84" rx="70" ry="9" />
+          <rect fill="url(#puff-grad)" x="30" y="72" width="130" height="14" rx="10" />
+          <circle fill="url(#puff-grad)" cx="38" cy="74" r="12" />
+          <circle fill="url(#puff-grad)" cx="60" cy="64" r="20" />
+          <circle fill="url(#puff-grad)" cx="92" cy="52" r="28" />
+          <circle fill="url(#puff-grad)" cx="124" cy="60" r="22" />
+          <circle fill="url(#puff-grad)" cx="146" cy="72" r="14" />
         </symbol>
       </svg>
       <!-- 外层 .cloud 做横向漂移，内层 .cloud-shape 做上下浮动 + 透明呼吸 -->
@@ -61,16 +85,19 @@ onBeforeUnmount(() => {
         <svg class="cloud-shape"><use href="#cloud-a" /></svg>
       </div>
       <div class="cloud cloud--2">
-        <svg class="cloud-shape"><use href="#cloud-b" /></svg>
+        <svg class="cloud-shape"><use href="#cloud-c" /></svg>
       </div>
       <div class="cloud cloud--3">
-        <svg class="cloud-shape"><use href="#cloud-a" /></svg>
+        <svg class="cloud-shape"><use href="#cloud-b" /></svg>
       </div>
       <div class="cloud cloud--4">
-        <svg class="cloud-shape"><use href="#cloud-b" /></svg>
+        <svg class="cloud-shape"><use href="#cloud-c" /></svg>
       </div>
       <div class="cloud cloud--5">
         <svg class="cloud-shape"><use href="#cloud-a" /></svg>
+      </div>
+      <div class="cloud cloud--6">
+        <svg class="cloud-shape"><use href="#cloud-c" /></svg>
       </div>
     </div>
     <!-- 星空 + 流星：暗色夜空场景（封装于 Starsky，亮色白天不显示） -->
@@ -355,7 +382,7 @@ onBeforeUnmount(() => {
             <stop offset="1" stop-color="#4e342e" />
           </linearGradient>
         </defs>
-        <!-- 树干：与左树不同的弯曲方向与根部形态，去镜像 -->
+        <!-- 树干：与左树不同的弯曲方向与根部形态，去镜像感 -->
         <path
           d="M282 300 Q290 260 281 220 Q287 210 291 206 Q295 210 296 222 Q290 262 298 300 Q290 305 282 300 Z"
           fill="url(#trunk3-grad)"
@@ -873,14 +900,13 @@ onBeforeUnmount(() => {
   left: 0;
 }
 
-/* 云朵图形：等比铺满外层宽度，fill 用内部明暗渐变（顶亮底暗），呈现云体内部体积与冷暖 */
+/* 云朵图形：等比铺满外层宽度；分层填色由 defs 内类 + 非 scoped 样式块控制（亮暗可换） */
 .cloud-shape {
   display: block;
   width: 100%;
   height: auto;
-  fill: url(#cloud-grad);
   /* 轻微底部投影 + 柔模糊：让云漂浮于天空（内部明暗由渐变 fill 提供）*/
-  filter: drop-shadow(0 4px 6px rgba(120, 150, 195, 0.18)) blur(0.5px);
+  filter: drop-shadow(0 6px 10px rgba(120, 150, 195, 0.2)) blur(0.4px);
   /* 透明呼吸：轻微明暗起伏，各朵经下方选择器错峰；横向漂移由外层 .cloud 负责 */
   animation: cloud-breathe 9s ease-in-out infinite;
 }
@@ -974,6 +1000,15 @@ onBeforeUnmount(() => {
   width: 0;
   height: 0;
   overflow: hidden;
+}
+
+/* 云朵第 6 朵：远处小碎云（更小更淡，拖更慢，丰富天空层次） */
+.cloud--6 {
+  top: 6%;
+  width: 72px;
+  opacity: 0.55;
+  animation: cloud-drift 800s linear infinite;
+  animation-delay: -220s;
 }
 
 /* 草地层：贴底，三层前景草叶（草原底色由 .meadow 提供） */
@@ -1299,10 +1334,28 @@ html.dark .flower .stem {
   stroke: #2e5a3f;
 }
 
-/* 云朵：暗色夜空剪影 */
+/* 蓬松云色板：CSS 变量在 .cloud-defs 上声明，被渐变 stop 的内联 var() 引用。
+   自定义属性可穿透 <use> 阴影树继承，暗色在 html.dark 整体换变量即可 */
+.cloud-defs {
+  --cg1: #ffffff;
+  --cg2: #f4f8fb;
+  --cg3: #d8e2ec;
+  --cu1: #8ca5c3;
+  --cuo1: 0.4;
+}
+
+/* 云色板（暗色）：夜空剪影保留受光/背光明暗，底部投影转深夜蓝 */
+html.dark .cloud-defs {
+  --cg1: #ccd9f0;
+  --cg2: #9dabd2;
+  --cg3: #5f6d96;
+  --cu1: #232e55;
+  --cuo1: 0.5;
+}
+
+/* 云朵：暗色阴影转黑（分层填色不变，仅换渐变色板） */
 html.dark .cloud-shape {
-  fill: url(#cloud-grad-dark);
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 12, 0.4)) blur(0.5px);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 12, 0.4)) blur(0.4px);
 }
 
 /* 草叶：暗色转冷翠，前/中景沿用渐变(冷翠站点) */
